@@ -20,3 +20,18 @@ AllCops:
     - 'db/schema.rb'
     - 'vendor/bundle/**/*'
   NewCops: enable
+Metrics/AbcSize:
+  Exclude:
+    - 'db/migrate/20211230080009_create_active_storage_tables.active_storage.rb'
+
+Metrics/MethodLength:
+  Exclude:
+    - bin/bundle
+    - db/migrate/20211230013819_devise_create_users.rb
+    - db/migrate/20211230080009_create_active_storage_tables.active_storage.rb
+Metrics/CyclomaticComplexity:
+  Exclude:
+    - 'bin/bundle'
+Metrics/PerceivedComplexity:
+  Exclude:
+    - 'bin/bundle'
