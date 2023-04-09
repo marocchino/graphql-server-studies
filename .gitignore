@@ -1,5 +1,7 @@
 node_modules
 dist
+tmp
+package-lock.json
 # Ignore bundler config.
 /rails/.bundle
 
@@ -9,7 +11,6 @@ dist
 
 # Ignore all logfiles and tempfiles.
 /rails/log/*
-/rails/tmp/*
 !/rails/log/.keep
 !/rails/tmp/.keep
 
