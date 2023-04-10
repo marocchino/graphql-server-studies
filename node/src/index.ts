@@ -1,13 +1,13 @@
-import { createServer } from 'node:http';
-import { createYoga } from 'graphql-yoga';
-import SchemaBuilder from '@pothos/core';
-import { PrismaClient } from '../generated/client';
-import PrismaPlugin from '@pothos/plugin-prisma';
+import { createServer } from "node:http";
+import { createYoga } from "graphql-yoga";
+import SchemaBuilder from "@pothos/core";
+import { PrismaClient } from "../generated/client";
+import PrismaPlugin from "@pothos/plugin-prisma";
 
-import type PrismaTypes from '../generated/pothos-types';
+import type PrismaTypes from "../generated/pothos-types";
 
 const prisma = new PrismaClient({});
-const builder = new SchemaBuilder<{PrismaTypes: PrismaTypes;}>({
+const builder = new SchemaBuilder<{ PrismaTypes: PrismaTypes }>({
   plugins: [PrismaPlugin],
   prisma: {
     client: prisma,
@@ -19,20 +19,19 @@ const builder = new SchemaBuilder<{PrismaTypes: PrismaTypes;}>({
   },
 });
 
-
 builder.queryType({
   fields: (t) => ({
     hello: t.string({
       args: {
         name: t.arg.string({}),
       },
-      resolve: (_, { name }) => `hello, ${name || 'World'}`,
+      resolve: (_, { name }) => `hello, ${name || "World"}`,
     }),
   }),
 });
 
 const yoga = createYoga({
-  graphqlEndpoint: '/graphiql',
+  graphqlEndpoint: "/graphiql",
   schema: builder.toSchema(),
 });
 

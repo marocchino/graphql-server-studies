@@ -7,7 +7,9 @@
     "generate": "prisma generate",
     "seed": "prisma migrate reset -f",
     "start": "node -r @swc-node/register src/index.ts",
-    "type": "tsc --noEmit"
+    "type": "tsc --noEmit",
+    "lint": "eslint --ext .ts,.tsx .",
+    "format": "prettier --write ."
   },
   "prisma": {
     "seed": "node -r @swc-node/register prisma/seed.ts"
@@ -18,6 +20,10 @@
   "devDependencies": {
     "@swc-node/register": "^1.6.3",
     "@swc/core": "^1.3.46",
+    "@typescript-eslint/eslint-plugin": "^5.58.0",
+    "@typescript-eslint/parser": "^5.58.0",
+    "eslint": "^8.38.0",
+    "prettier": "^2.8.7",
     "typescript": "^5.0.4"
   },
   "dependencies": {
