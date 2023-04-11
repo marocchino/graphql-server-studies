@@ -30,7 +30,7 @@ jobs:
         options: >-
           --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
     env:
-      DATABASE_URL: "postgresql://prisma:prisma@localhost:5432/tests?schema=public"
+      DATABASE_URL: "postgresql://prisma:prisma@localhost:5455/tests?schema=public"
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
