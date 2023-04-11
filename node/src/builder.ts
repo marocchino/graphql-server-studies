@@ -16,3 +16,6 @@ export const builder = new SchemaBuilder<{ PrismaTypes: PrismaTypes }>({
     filterConnectionTotalCount: true,
   },
 });
+
+builder.queryType();
+builder.mutationType();
