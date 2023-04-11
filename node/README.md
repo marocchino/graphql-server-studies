@@ -12,9 +12,12 @@
 ### setup
 
 ```sh
+brew install direnv
 asdf install
+npm i -g yarn
 yarn
 docker compose up -d
+cp .env.sample .env
 yarn prisma migrate reset
 ```
 
@@ -22,7 +25,16 @@ yarn prisma migrate reset
 
 ```sh
 yarn prisma migrate deploy
+yarn seed
 yarn start
+```
+
+### test
+
+```sh
+yarn prisma migrate deploy
+yarn seed
+yarn test
 ```
 
 ## reference
