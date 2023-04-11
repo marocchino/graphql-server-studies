@@ -21,9 +21,10 @@ jobs:
         ports:
           - '5455:5432'
         env:
+          POSTGRES_HOST_AUTH_METHOD: trust
           POSTGRES_USER: prisma
           POSTGRES_PASSWORD: prisma
-          POSTGRES_DB: tests
+          POSTGRES_DB: prisma
 
         # Set health checks to wait until postgres has started
         options: >-
