@@ -28,7 +28,7 @@ builder.queryType({
         db.project.findUnique({
           ...query,
           where: { id: +id },
-        }),
+        }) as any,
     }),
   }),
 });
