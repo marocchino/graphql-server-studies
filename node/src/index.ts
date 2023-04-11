@@ -1,10 +1,10 @@
 import { createServer } from "node:http";
 import { createYoga } from "graphql-yoga";
-import { builder } from "./schema";
+import { schema } from "./schema";
 
 const yoga = createYoga({
   graphqlEndpoint: "/graphiql",
-  schema: builder.toSchema(),
+  schema,
 });
 
 const server = createServer(yoga);

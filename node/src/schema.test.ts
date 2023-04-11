@@ -1,7 +1,5 @@
 import { describe, expect, it } from "@jest/globals";
-import { builder } from "./schema";
-
-export const schema = builder.toSchema();
+import { schema } from "./schema";
 
 describe("schema", () => {
   it("should be defined", () => {
