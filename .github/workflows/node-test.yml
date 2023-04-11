@@ -31,6 +31,8 @@ jobs:
 
       - name: Install dependencies
         run: yarn
+        working-directory: ./node
 
       - name: Run tests
         run: yarn test
+        working-directory: ./node
