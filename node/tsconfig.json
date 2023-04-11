@@ -2,9 +2,9 @@
   "compilerOptions": {
     "strict": true,
     "skipLibCheck": false,
-    "target": "es2019",
-    "moduleResolution": "node",
-    "allowSyntheticDefaultImports": true
+    "target": "es2019"
+    // "moduleResolution": "node",
+    // "allowSyntheticDefaultImports": true
   },
-  "include": ["prisma/*.ts", "src/**/*"]
+  "include": ["prisma/*.ts", "src/**/*", "generated/**/*"]
 }

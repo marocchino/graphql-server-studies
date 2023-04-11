@@ -727,7 +727,7 @@ export namespace Prisma {
     Project: "Project";
   };
 
-  export type ModelName = typeof ModelName[keyof typeof ModelName];
+  export type ModelName = (typeof ModelName)[keyof typeof ModelName];
 
   export type Datasources = {
     db?: Datasource;
@@ -2805,21 +2805,21 @@ export namespace Prisma {
   };
 
   export type ProjectScalarFieldEnum =
-    typeof ProjectScalarFieldEnum[keyof typeof ProjectScalarFieldEnum];
+    (typeof ProjectScalarFieldEnum)[keyof typeof ProjectScalarFieldEnum];
 
   export const QueryMode: {
     default: "default";
     insensitive: "insensitive";
   };
 
-  export type QueryMode = typeof QueryMode[keyof typeof QueryMode];
+  export type QueryMode = (typeof QueryMode)[keyof typeof QueryMode];
 
   export const SortOrder: {
     asc: "asc";
     desc: "desc";
   };
 
-  export type SortOrder = typeof SortOrder[keyof typeof SortOrder];
+  export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder];
 
   export const TransactionIsolationLevel: {
     ReadUncommitted: "ReadUncommitted";
@@ -2829,7 +2829,7 @@ export namespace Prisma {
   };
 
   export type TransactionIsolationLevel =
-    typeof TransactionIsolationLevel[keyof typeof TransactionIsolationLevel];
+    (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel];
 
   export const UserScalarFieldEnum: {
     id: "id";
@@ -2838,7 +2838,7 @@ export namespace Prisma {
   };
 
   export type UserScalarFieldEnum =
-    typeof UserScalarFieldEnum[keyof typeof UserScalarFieldEnum];
+    (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum];
 
   /**
    * Deep Input Types

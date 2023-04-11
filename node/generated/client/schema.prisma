@@ -3,7 +3,7 @@
 
 generator pothos {
   provider = "prisma-pothos-types"
-  clientOutput = "@prisma/client"
+  clientOutput = "./client"
   output = "../generated/pothos-types.ts"
 }
 

@@ -6,7 +6,10 @@ builder.prismaNode("Project", {
   fields: (t) => ({
     _id: t.exposeID("id"),
     name: t.exposeString("name"),
-    description: t.exposeString("description"),
+    description: t.string({
+      select: { description: true },
+      resolve: (project) => project.description || "",
+    }),
   }),
 });
 
@@ -24,11 +27,10 @@ builder.queryType({
       args: {
         id: t.arg.id({ required: true }),
       },
-      resolve: async (query, _root, { id }) =>
-        db.project.findUnique({
-          ...query,
+      resolve: async (_query, _root, { id }) =>
+        db.project.findUniqueOrThrow({
           where: { id: +id },
-        }) as any,
+        }),
     }),
   }),
 });
