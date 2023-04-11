@@ -22,3 +22,10 @@ model User {
   email String  @unique
   name  String?
 }
+
+model Project {
+  id          Int      @id @default(autoincrement())
+  name        String
+  description String?
+  due_on       DateTime?
+}
