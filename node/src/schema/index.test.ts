@@ -1,5 +1,5 @@
 import { describe, expect, it } from "@jest/globals";
-import { schema } from "./schema";
+import { schema } from "./";
 
 describe("schema", () => {
   it("should be defined", () => {
