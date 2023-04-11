@@ -13,7 +13,23 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    services:
+      # Label used to access the service container
+      postgres:
+        # Docker Hub image
+        image: postgres
+        ports:
+          - '5455:5432'
+        env:
+          POSTGRES_USER: prisma
+          POSTGRES_PASSWORD: prisma
+          POSTGRES_DB: tests
 
+        # Set health checks to wait until postgres has started
+        options: >-
+          --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+    env:
+      DATABASE_URL: "postgresql://prisma:prisma@localhost:5432/tests?schema=public"
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -31,6 +47,10 @@ jobs:
 
       - name: Install dependencies
         run: yarn
+        working-directory: ./node
+
+      - name: DB migrate
+        run: yarn prisma migrate deploy
         working-directory: ./node
 
       - name: Run tests
