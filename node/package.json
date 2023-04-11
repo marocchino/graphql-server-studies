@@ -8,7 +8,7 @@
     "generate": "prisma generate",
     "lint": "eslint --ext .ts,.tsx .",
     "prepare": "cd .. && husky install node/.husky",
-    "seed": "prisma migrate reset -f",
+    "seed": "node -r @swc-node/register prisma/seed.ts",
     "start": "node -r @swc-node/register src/index.ts",
     "type": "tsc --noEmit",
     "test": "jest"

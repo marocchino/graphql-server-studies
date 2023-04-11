@@ -4,11 +4,11 @@ on:
   push:
     paths:
       - .github/workflows/node-test.yml
-      - 'node/*'
+      - 'node/**'
   pull_request:
     paths:
       - .github/workflows/node-test.yml
-      - 'node/*'
+      - 'node/**'
 
 jobs:
   test:
@@ -50,12 +50,11 @@ jobs:
         run: yarn
         working-directory: ./node
 
-      - name: DB migrate
-        run: yarn prisma migrate deploy
-        working-directory: ./node
-
-      - name: Run generate
-        run: yarn generate
+      - name: DB migrate & prisma generate & DB seed
+        run: |
+          yarn prisma migrate deploy
+          yarn generate
+          yarn seed
         working-directory: ./node
 
       - name: Run tests
