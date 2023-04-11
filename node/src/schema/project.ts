@@ -6,6 +6,7 @@ builder.prismaNode("Project", {
   fields: (t) => ({
     _id: t.exposeID("id"),
     name: t.exposeString("name"),
+    dueOn: t.expose("due_on", { type: "DateTime", nullable: true }),
     description: t.string({
       select: { description: true },
       resolve: (project) => project.description || "",
