@@ -3,10 +3,12 @@ name: Test Node.js
 on:
   push:
     paths:
-      - node/*
+      - .github/workflows/node-test.yml
+      - 'node/*'
   pull_request:
     paths:
-      - node/*
+      - .github/workflows/node-test.yml
+      - 'node/*'
 
 jobs:
   test:
