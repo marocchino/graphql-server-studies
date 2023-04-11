@@ -1,6 +1,12 @@
 name: Test Node.js
 
-on: [push, pull_request]
+on:
+  push:
+    paths:
+      - node/*
+  pull_request:
+    paths:
+      - node/*
 
 jobs:
   test:
@@ -12,6 +18,8 @@ jobs:
 
       - name: Read .tool-versions
         uses: marocchino/tool-versions-action@v1
+        with:
+          path: node/.tool-versions
         id: versions
 
       - name: Use Node.js ${{ steps.versions.outputs.nodejs}}
