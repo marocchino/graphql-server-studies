@@ -1,11 +1,15 @@
 # frozen_string_literal: true
 
+# root of the GraphQL schema
 class ApiSchema < GraphQL::Schema
   mutation(Types::MutationType)
   query(Types::QueryType)
 
   # For batch-loading (see https://graphql-ruby.org/dataloader/overview.html)
   use GraphQL::Dataloader
+
+  max_depth(10)
+  max_complexity(100)
 
   # GraphQL-Ruby calls this when something goes wrong while running a query:
 

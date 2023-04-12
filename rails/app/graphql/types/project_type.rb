@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module Types
+  # GraphQL type for a project
   class ProjectType < Types::BaseObject
     description 'A project'
 

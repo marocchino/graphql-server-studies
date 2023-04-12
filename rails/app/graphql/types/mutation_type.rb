@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module Types
+  # MutationType is the root of all mutations
   class MutationType < Types::BaseObject
     description 'The mutation root of this schema'
     # TODO: remove me
