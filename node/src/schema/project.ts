@@ -1,6 +1,6 @@
 import { builder } from "../builder";
 import { db } from "../db";
-import { TaskWhereInput } from "./task";
+import { TaskWhereInput, TaskOrderByInput } from "./task";
 
 builder.prismaNode("Project", {
   id: { field: "id" },
@@ -16,6 +16,10 @@ builder.prismaNode("Project", {
       type: ["Task"],
       args: {
         filter: t.arg({ type: TaskWhereInput }),
+        orderBy: t.arg({
+          type: TaskOrderByInput,
+          defaultValue: { createdAt: "desc" },
+        }),
       },
       resolve: (_, project, args) => {
         const where = { project_id: project.id };
@@ -26,9 +30,13 @@ builder.prismaNode("Project", {
         ) {
           return db.task.findMany({
             where: { ...where, completed: args.filter.completed },
+            orderBy: [{ created_at: args?.orderBy?.createdAt ?? "desc" }],
           });
         }
-        return db.task.findMany({ where });
+        return db.task.findMany({
+          where,
+          orderBy: [{ created_at: args?.orderBy?.createdAt ?? "desc" }],
+        });
       },
     }),
   }),

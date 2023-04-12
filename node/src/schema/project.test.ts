@@ -4,14 +4,14 @@ import { schema } from "./";
 
 describe("query project", () => {
   const query = `
-    query Project($id: ID!, $filter: TaskWhereInput!) {
+    query Project($id: ID!, $filter: TaskWhereInput!, $order: TaskOrderByInput) {
       project(id: $id) {
         id
         _id
         description
         dueOn
         name
-        tasks(filter: $filter) {
+        tasks(filter: $filter, orderBy: $order) {
           name
           completed
         }
@@ -67,12 +67,12 @@ describe("query project", () => {
           name: "name",
           tasks: [
             {
-              name: "task 1",
-              completed: false,
-            },
-            {
               name: "task 2",
               completed: true,
+            },
+            {
+              name: "task 1",
+              completed: false,
             },
           ],
         },

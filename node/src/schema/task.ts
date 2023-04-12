@@ -1,4 +1,5 @@
 import { builder } from "../builder";
+import { SortOrder } from "./global";
 
 builder.prismaNode("Task", {
   id: { field: "id" },
@@ -12,5 +13,14 @@ builder.prismaNode("Task", {
 export const TaskWhereInput = builder.inputType("TaskWhereInput", {
   fields: (t) => ({
     completed: t.boolean(),
+  }),
+});
+export const TaskOrderByInput = builder.inputType("TaskOrderByInput", {
+  fields: (t) => ({
+    createdAt: t.field({
+      type: SortOrder,
+      defaultValue: "desc",
+      required: true,
+    }),
   }),
 });
