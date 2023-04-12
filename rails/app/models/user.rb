@@ -14,14 +14,14 @@ class User < ApplicationRecord
   validates :last_name, presence: true
 
   before_save :ensure_authentication_token
-  after_create :send_welcome_email
+  # after_create :send_welcome_email
 
-  geocoded_by :last_sign_in_ip do |user, result|
-    if !user.local? && (geocode = result.first)
-      user.location = "#{geocode.city}, #{geocode.state}, #{geocode.country}"
-      user.save
-    end
-  end
+  # geocoded_by :last_sign_in_ip do |user, result|
+  #   if !user.local? && (geocode = result.first)
+  #     user.location = "#{geocode.city}, #{geocode.state}, #{geocode.country}"
+  #     user.save
+  #   end
+  # end
 
   def name
     [first_name, last_name].join(' ')
@@ -48,7 +48,7 @@ class User < ApplicationRecord
     end
   end
 
-  def send_welcome_email
-    UserMailer.welcome_email(self).deliver_later
-  end
+  # def send_welcome_email
+  #   UserMailer.welcome_email(self).deliver_later
+  # end
 end
