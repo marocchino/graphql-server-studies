@@ -1,5 +1,4 @@
-import { describe, beforeEach, expect, it } from "@jest/globals";
-import { PrismaClient } from "@prisma/client";
+import { describe, expect, it } from "@jest/globals";
 import { graphql } from "graphql";
 import { schema } from "./";
 

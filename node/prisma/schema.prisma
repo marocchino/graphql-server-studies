@@ -27,5 +27,16 @@ model Project {
   id          Int      @id @default(autoincrement())
   name        String
   description String?
-  due_on       DateTime?
+  due_on      DateTime?
+  tasks       Task[]
+}
+
+model Task {
+  id          Int      @id @default(autoincrement())
+  name        String
+  completed   Boolean  @default(false)
+  project_id  Int
+  project     Project  @relation(fields: [project_id], references: [id])
+  created_at  DateTime @default(now())
+  updated_at  DateTime @updatedAt
 }

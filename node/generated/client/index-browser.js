@@ -105,6 +105,15 @@ exports.Prisma.SortOrder = makeEnum({
   desc: "desc",
 });
 
+exports.Prisma.TaskScalarFieldEnum = makeEnum({
+  id: "id",
+  name: "name",
+  completed: "completed",
+  project_id: "project_id",
+  created_at: "created_at",
+  updated_at: "updated_at",
+});
+
 exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
   ReadUncommitted: "ReadUncommitted",
   ReadCommitted: "ReadCommitted",
@@ -121,6 +130,7 @@ exports.Prisma.UserScalarFieldEnum = makeEnum({
 exports.Prisma.ModelName = makeEnum({
   User: "User",
   Project: "Project",
+  Task: "Task",
 });
 
 /**
