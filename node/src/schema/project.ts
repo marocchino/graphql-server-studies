@@ -11,6 +11,13 @@ builder.prismaNode("Project", {
       select: { description: true },
       resolve: (project) => project.description || "",
     }),
+    tasks: t.prismaField({
+      type: ["Task"],
+      resolve: (_, project) =>
+        db.task.findMany({
+          where: { project_id: project.id },
+        }),
+    }),
   }),
 });
 

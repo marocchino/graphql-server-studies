@@ -12,6 +12,10 @@ describe("query project", () => {
           description
           dueOn
           name
+          tasks {
+            name
+            completed
+          }
         }
       }
     `;
@@ -32,6 +36,16 @@ describe("query project", () => {
           description: "desc",
           dueOn: null,
           name: "name",
+          tasks: [
+            {
+              name: "task 1",
+              completed: false,
+            },
+            {
+              name: "task 2",
+              completed: true,
+            },
+          ],
         },
       },
     });
