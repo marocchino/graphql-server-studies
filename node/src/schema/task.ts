@@ -8,3 +8,9 @@ builder.prismaNode("Task", {
     completed: t.exposeBoolean("completed"),
   }),
 });
+
+export const TaskWhereInput = builder.inputType("TaskWhereInput", {
+  fields: (t) => ({
+    completed: t.boolean(),
+  }),
+});

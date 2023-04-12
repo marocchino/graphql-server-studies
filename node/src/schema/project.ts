@@ -1,5 +1,6 @@
 import { builder } from "../builder";
 import { db } from "../db";
+import { TaskWhereInput } from "./task";
 
 builder.prismaNode("Project", {
   id: { field: "id" },
@@ -13,10 +14,22 @@ builder.prismaNode("Project", {
     }),
     tasks: t.prismaField({
       type: ["Task"],
-      resolve: (_, project) =>
-        db.task.findMany({
-          where: { project_id: project.id },
-        }),
+      args: {
+        filter: t.arg({ type: TaskWhereInput }),
+      },
+      resolve: (_, project, args) => {
+        const where = { project_id: project.id };
+        if (
+          args.filter &&
+          args.filter.completed !== undefined &&
+          args.filter.completed !== null
+        ) {
+          return db.task.findMany({
+            where: { ...where, completed: args.filter.completed },
+          });
+        }
+        return db.task.findMany({ where });
+      },
     }),
   }),
 });
